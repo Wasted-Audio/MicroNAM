@@ -49,8 +49,8 @@ def convert_nam_to_header(nam_file: Path, header_file: Path) -> tuple[str, int]:
     lines = [
         "#pragma once",
         "",
-        f"static constexpr unsigned int {count_name} = {len(weights)};",
-        f"static constexpr float {weights_name}[{count_name}] = {{",
+        f"static const unsigned int {count_name} = {len(weights)};",
+        f"static const float {weights_name}[{count_name}] = {{",
     ]
 
     row = []
@@ -76,7 +76,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
             "Convert a Neural Amp Modeler .nam JSON file into a C++ header "
-            "with static constexpr weight symbols."
+            "with static const weight symbols."
         )
     )
     parser.add_argument("input_nam", type=Path, help="Path to input .nam file")
